@@ -33,7 +33,24 @@ layout = dbc.Container([
             width=2 # last 2/12ths of a row
         ),
     ],
-    className="m-2",
+        className="m-2",
+    ),
+
+    # level up bar row
+    dbc.Row([
+        dbc.Col([
+            dbc.Card([
+                html.H2("Level bar, shows progress in different colour")
+            ])
+        ], width=9),
+
+        dbc.Col([
+            dbc.Card([
+                html.H2("+n XP")
+            ])
+        ], width=3),
+    ],
+        className="m-2",
     ),
 
     # Second Row
@@ -41,37 +58,19 @@ layout = dbc.Container([
         # First Column in the second row
         dbc.Col([
 
-
-
-                dbc.Row([
-
-                    dbc.Card([
-                        html.H3("Quiz description"),
-                        html.P("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."),
-                    ]),
+            dbc.Row([
+                dbc.Card([
+                    html.H1("SCORE!")
                 ]),
+            ]),
 
-                dbc.Row([
+            dbc.Row([
 
-                    dbc.Card([
-                        html.H3("Time limit"),
-                        html.P("PUT A PROGRESS BAR HERE"),
-                    ]),
+                dbc.Card([
+                    html.H3("Quiz breakdown"),
                 ]),
-
-                dbc.Row([
-
-                    dbc.Card([
-                        html.H3("Quiz XP"),
-                        html.P("PUT AN XP BAR HERE"),
-                    ]),
-                ]),
-            ],
-
-
-
-
-
+            ]),
+        ],
             width=6,
         ),
 
@@ -106,7 +105,6 @@ layout = dbc.Container([
             width=6
         ),
     ],
-
     className="m-3"
     ),
 ])
