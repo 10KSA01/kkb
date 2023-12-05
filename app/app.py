@@ -4,7 +4,7 @@ from components.navbar import create_navbar
 
 app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP, dbc.icons.BOOTSTRAP], use_pages=True)
 
-app.title = 'KKB'
+app.title = 'Quizi'
 
 navbar = create_navbar()
 
