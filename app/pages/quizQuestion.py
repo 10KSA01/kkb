@@ -35,9 +35,9 @@ c_answers = 0
 #correct = "A"
 q_completed = 0
 q_questions = len(questionSet)
-stars = 4
+stars = 2
 
-stars_unicode = "".join(["★"] * stars + ["☆"] * (5-stars))
+stars_unicode = "".join(["★"] * stars + ["☆"] * (3-stars))
 
 buttons = [
         dbc.Row([
