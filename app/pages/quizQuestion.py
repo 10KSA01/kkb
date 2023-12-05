@@ -136,6 +136,8 @@ layout = dbc.Container([
 
 
     ]),
+
+    dcc.Location(id='url'),
 ])
 
 
@@ -152,6 +154,7 @@ layout = dbc.Container([
         Output("quizbutton-2-text", "children"),
         Output("quizbutton-3-text", "children"),
         Output("quizbutton-4-text", "children"),
+        Output("url", "pathname"),
     ],
     [
         Input("quizbutton-1", "n_clicks_timestamp"),
@@ -170,10 +173,11 @@ def add_score_callback(b1, b2, b3, b4):
     bs = [(n if n is not None else -1) for n in [b1, b2, b3, b4]]
     m = max(bs)
     mInd = max(enumerate(bs), key=lambda x: x[1])[0]
-    print(bs, m, mInd)
+    #print(bs, m, mInd)
+
     # sometimes callbacks just happen, not sure why. This prevents them being processed
     if m > -1:
-        print("ABCD"[mInd])
+        #print("ABCD"[mInd])
         if "ABCD"[mInd] == correctSet[q_completed]:
             with open("temp/cur_quiz_score.tmp", "r") as f_r:
                 cur_score = int(f_r.read())
@@ -192,10 +196,12 @@ def add_score_callback(b1, b2, b3, b4):
         if q_completed == q_questions:
             print("STOPSTOPSTOP")
 
+            return [None] * 10 + ["/quizresults"]
+
         #TODO: change to new page
 
     # Reset button click times
-    return [-1] * 4 + [questionSet[q_completed], f"Q {q_completed+1}/{q_questions}"] + answerSet[q_completed]
+    return [-1] * 4 + [questionSet[q_completed], f"Q {q_completed+1}/{q_questions}"] + answerSet[q_completed] + [None]
 
 
 
