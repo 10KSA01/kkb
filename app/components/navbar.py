@@ -14,9 +14,8 @@ def create_navbar():
                 ],
                 nav=True,
                 in_navbar=True,
-                label="temp Icon",
+                label="Profile",
             ),
-            dbc.NavItem(dbc.NavLink("Level 5"))
         ],
         brand="Quizi",
         brand_href="/",
