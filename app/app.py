@@ -13,7 +13,7 @@ app.layout = html.Div(
         dbc.Row(
             [
                 navbar,
-                dbc.Row(page_container, style={"display": "flex", "justify-content": "center", "align-items": "center"}),
+                dbc.Row(page_container, style={"display": "flex", "justify-content": "space-evenly", "align-items": "center"}),
             ],
             class_name="g-0"
         ),
