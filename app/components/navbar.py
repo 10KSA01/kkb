@@ -2,11 +2,11 @@ from dash import html, dcc
 import dash_bootstrap_components as dbc
 
 def create_navbar():
-    navbar = dbc.NavbarSimple(
+    return dbc.NavbarSimple(
         children=[
             dbc.NavItem(dbc.NavLink("Home", href="/")),
-            dbc.NavItem(dbc.NavLink("Quiz", href="/quizstart")),
             dbc.NavItem(dbc.NavLink("Shop", href="/shop")),
+            dbc.NavItem(dbc.NavLink("Quiz", href="/quiz-selection")),
             dbc.DropdownMenu(
                 children=[
                     dbc.DropdownMenuItem("Profile", href="#"),
@@ -14,13 +14,13 @@ def create_navbar():
                 ],
                 nav=True,
                 in_navbar=True,
-                label="temp Icon",
+                label="Profile",
             ),
-            dbc.NavItem(dbc.NavLink("Level 5"))
         ],
         brand="Quizi",
         brand_href="/",
         color="primary",
         dark=True,
+        fluid=True,
+        style={"padding": "0.5vh 2vw"}
     )
-    return navbar
