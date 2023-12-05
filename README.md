@@ -7,3 +7,9 @@
 2. Work on it
 3. Tick off item
 4. Put ticked off item to bottom of list
+
+# What are points?
+They are used to buy cosmetics.
+
+# How to get points (currency)
+- Quizzes
