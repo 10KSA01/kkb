@@ -1,2 +1,8 @@
 # Thanks arch
 /venv/
+
+#ignore pycache
+/__pycache__/
+# ignore idea folder
+/.idea/
+
