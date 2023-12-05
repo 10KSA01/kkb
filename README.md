@@ -7,3 +7,41 @@
 2. Work on it
 3. Tick off item
 4. Put ticked off item to bottom of list
+
+# List of Pages
+- Dashboard
+- Quiz Start
+- Quiz Middle
+- Quiz End
+- Profile
+- Shop
+
+## Dashboard
+- total level (average of skill levels)
+- user radar graph
+- latest quiz attempt
+- recent activity
+  - last few quizzes
+- quiz history (like match history)
+- recommended quizzes
+  - recommended
+  - assigned (like homework)
+- friend activity
+  - latest quiz
+  - level
+  - skills
+  - radar graph
+- recommended fields + jobs
+- daily quests
+    - like battle pass
+    - with daily rewards
+
+## Quiz Start
+- name + description
+- difficulty (out of 5)
+- XP
+- previous score
+- friend high score
+  - scoreboard
+- radar graph for quiz
+- time limit
