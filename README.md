@@ -8,6 +8,18 @@
 3. Tick off item
 4. Put ticked off item to bottom of list
 
+# What are points?
+They are used to buy cosmetics.
+
+# How to get points (currency)
+- Quizzes
+
+# What are points?
+They are used to buy cosmetics.
+
+# How to get points (currency)
+- Quizzes
+
 # List of Pages
 - Dashboard
 - Quiz Start
