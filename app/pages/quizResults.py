@@ -1,5 +1,3 @@
-# page to be used during a quiz
-
 from dash import Dash, html, dcc, register_page
 import dash_bootstrap_components as dbc
 
@@ -30,62 +28,85 @@ layout = dbc.Container([
 
         dbc.Col(
             dbc.Card([
-                html.H3("Progress, either q/tot or as a bar"),
+                dbc.NavItem(dbc.NavLink("START QUIZ", href="/quizquestion")),
             ]),
             width=2 # last 2/12ths of a row
         ),
     ],
-    className="m-2",
+        className="m-2",
     ),
 
+    # level up bar row
     dbc.Row([
+        dbc.Col([
+            dbc.Card([
+                html.H2("Level bar, shows progress in different colour")
+            ])
+        ], width=9),
 
-        dbc.Card([
-            html.H1("THIS IS WHERE THE QUESTION GOES"),
-            html.H3("Here is some question context or description")
+        dbc.Col([
+            dbc.Card([
+                html.H2("+n XP")
+            ])
+        ], width=3),
+    ],
+        className="m-2",
+    ),
 
-        ])
-    ]),
-
-
+    # Second Row
     dbc.Row([
         # First Column in the second row
         dbc.Col([
-            dbc.Row([
-                dbc.Card([
-                    html.H3("Question answer 1"),
-                ])
-            ]),
 
             dbc.Row([
                 dbc.Card([
-                    html.H3("Question answer 3"),
-                ])
-            ])
+                    html.H1("SCORE!")
+                ]),
+            ]),
+
+            dbc.Row([
+
+                dbc.Card([
+                    html.H3("Quiz breakdown"),
+                ]),
+            ]),
         ],
             width=6,
         ),
 
+        # Second Column in the second row
         dbc.Col([
-
             dbc.Row([
+
                 dbc.Card([
-                    html.H3("Question answer 2"),
-                ])
+                    html.H3("Prev score"),
+                    html.P("Score as % or 'First attempt, give it a go!'"),
+                ]),
             ]),
 
             dbc.Row([
+
                 dbc.Card([
-                    html.H3("Question answer 4"),
-                ])
+                    html.H3("Friend high score section"),
+                    html.P("Friend high score thingy"),
+                ]),
             ]),
+
+            dbc.Row([
+
+                dbc.Card([
+                    html.H3("Skill radar graph"),
+                    html.P("Skill radar graph"),
+                ]),
+            ]),
+
 
         ],
-            width=6,
+            width=6
         ),
-
-
-    ]),
+    ],
+    className="m-3"
+    ),
 ])
 
 
