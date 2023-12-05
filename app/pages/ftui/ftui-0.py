@@ -3,8 +3,15 @@ import dash_bootstrap_components as dbc
 import plotly.express as px
 import pandas as pd
 import json
+import platform
 
-with open('data/skills.json', 'r') as file:
+file_path = ""
+if platform.system() == 'Windows':
+    file_path = "app/data/skills.json"
+else:
+    file_path = "data/skills.json"
+    
+with open(file_path, 'r') as file:
     skills_data = json.load(file)
 
 skills_list = list(skills_data['MainSkills'].keys())
