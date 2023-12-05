@@ -9,7 +9,7 @@ register_page(__name__)
 
 # Use the Dash app with a Bootstrap theme
 
-layout = dbc.Card([
+layout = dbc.Container([
     # First Row
     dbc.Row([
         # First Column in the first row
