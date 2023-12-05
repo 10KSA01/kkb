@@ -53,9 +53,7 @@ layout = dbc.Container([
         className="m-2",
     ),
 
-    # Second Row
     dbc.Row([
-        # First Column in the second row
         dbc.Col([
 
             dbc.Row([
@@ -68,6 +66,14 @@ layout = dbc.Container([
 
                 dbc.Card([
                     html.H3("Quiz breakdown"),
+                    html.P("Maybe by question")
+                ]),
+            ]),
+
+            dbc.Row([
+
+                dbc.Card([
+                    dbc.NavItem(dbc.NavLink("next quiz button", href="/quizstart")),
                 ]),
             ]),
         ],
@@ -79,33 +85,14 @@ layout = dbc.Container([
             dbc.Row([
 
                 dbc.Card([
-                    html.H3("Prev score"),
-                    html.P("Score as % or 'First attempt, give it a go!'"),
+                    html.H3("Friend scoreboard"),
                 ]),
             ]),
-
-            dbc.Row([
-
-                dbc.Card([
-                    html.H3("Friend high score section"),
-                    html.P("Friend high score thingy"),
-                ]),
-            ]),
-
-            dbc.Row([
-
-                dbc.Card([
-                    html.H3("Skill radar graph"),
-                    html.P("Skill radar graph"),
-                ]),
-            ]),
-
-
         ],
             width=6
         ),
     ],
-    className="m-3"
+        className="m-3"
     ),
 ])
 

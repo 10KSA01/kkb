@@ -1,7 +1,15 @@
 from dash import Dash, html, dcc, register_page
 import dash_bootstrap_components as dbc
 import json
-with open('data/baseline_quiz.json') as f:
+import platform
+
+file_path = ""
+if platform.system() == 'Windows':
+    file_path = "app\\data\\baseline_quiz.json"
+else:
+    file_path = "data/baseline_quiz.json"
+    
+with open(file_path) as f:
     quiz_json_data = json.load(f)
 
 register_page(__name__)
