@@ -13,11 +13,14 @@
 - [ ] find a list of suitable skills
 - [x] find an example game to use as an example - DUOLINGO
 - [ ] list of classes and subclasses - FIELDS AND JOBS
-- [ ] lectures and quizes as quests
+- [ ] lectures and quizes as quests / ways to get currency
+- [ ] ways to spend currency
 - [ ] scaling xp reqs
 - [ ] some sort of baseline quiz to determine initial levels
 - [ ] level scaling reqs in games
 - [ ] logo
 - [ ] name
 - [ ] colour scheme
- 
+- [ ] cosmetics
+- [ ] daily streak rewards
+- [ ] find diminishing returns calculation and steal
