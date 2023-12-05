@@ -16,6 +16,7 @@ They are used to buy cosmetics.
 
 # List of Pages
 - Dashboard
+- Quiz Selection
 - Quiz Start
 - Quiz Middle
 - Quiz End
@@ -65,3 +66,20 @@ They are used to buy cosmetics.
 - next quiz
 - friend scoreboard
 
+## Profile
+- Avatar
+- Cosmetics
+  - Border
+  - Backgrounds
+  - Titles
+    - Tie system e.g. amateur -> master
+- leaderboard
+  - global
+  - national
+  - school
+  - friends
+- teacher contact
+- recommended fields + jobs
+- career progress
+  - useful for company scouting
+- dream job
