@@ -8,6 +8,15 @@ from dash.dependencies import Input, Output
 register_page(__name__)
 
 
+###############
+# setup files #
+###############
+with open("temp/cur_quiz_score.tmp", "w") as f_w:
+    f_w.write("0")
+with open("temp/cur_quiz_answered.tmp", "w") as f_w:
+    f_w.write("0")
+
+
 #TODO: MASSIVE MAKE THIS READ FROM JSON
 #  or similar, maybe do object based approach, with each question having
 #  a question, answers and a correct value
@@ -186,7 +195,7 @@ def add_score_callback(b1, b2, b3, b4):
         #TODO: change to new page
 
     # Reset button click times
-    return [-1] * 4 + [questionSet[q_completed], f"Q {q_completed}/{q_questions}"] + answerSet[q_completed]
+    return [-1] * 4 + [questionSet[q_completed], f"Q {q_completed+1}/{q_questions}"] + answerSet[q_completed]
 
 
 
