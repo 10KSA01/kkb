@@ -1,7 +1,11 @@
 # Thanks arch
 /venv/
-app/*/__pycache__/
+
+*/__pycache__/
 *.pyc
+app/*/__pycache__/
 app/pages/*/__pycache__/
+
 /.idea/
 
+*.tmp
