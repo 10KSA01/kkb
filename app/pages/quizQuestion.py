@@ -35,7 +35,15 @@ layout = dbc.Container([
             width=2 # last 2/12ths of a row
         ),
     ],
-    className="m-2",
+        className="m-2",
+    ),
+
+    dbc.Row([
+        dbc.Card([
+            html.H4("timer progress bar if possible"),
+        ])
+    ],
+        className="m-2",
     ),
 
     dbc.Row([
@@ -45,7 +53,9 @@ layout = dbc.Container([
             html.H3("Here is some question context or description")
 
         ])
-    ]),
+    ],
+        className="m-2",
+    ),
 
 
     dbc.Row([
