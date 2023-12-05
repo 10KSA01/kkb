@@ -1,7 +1,6 @@
 from dash import Dash, dcc, html, dash_table
 import dash_bootstrap_components as dbc
 import pandas as pd
-import dash_ag_grid as dag
 
 # Sample data for DataTables
 recent_quest = {'': ['Completed Quest: Addition Level 3 (7/10)', 'Completed Quest: Subtraction Level 2 (8/10)', 'Completed Quest: Addition Level 1 (10/10)']}
