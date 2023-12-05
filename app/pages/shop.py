@@ -18,10 +18,10 @@ layout = dbc.CardBody(
             ),
         ]),
         html.Br(),
-        dbc.Row(html.H2("Accessories")),
+        dbc.Row(dbc.Col(html.H2("Accessories"), width={"offset": 1})),
         dbc.Row(
             [
-                dbc.Col([example_shop_item("Border 1", "15 points", "/assets/images/borders/border1.jpg")], width=2),
+                dbc.Col([example_shop_item("Border 1", "15 points", "/assets/images/borders/border1.jpg")], width={"offset": 1, "size": 2}),
                 dbc.Col([example_shop_item("Border 2", "20 points", "/assets/images/borders/border2.jpg")], width=2),
                 dbc.Col([example_shop_item("Border 3", "50 points", "/assets/images/borders/border3.jpg")], width=2),
                 dbc.Col([example_shop_item("Border 4", "150 points", "/assets/images/borders/border4.jpg")], width=2),
@@ -32,13 +32,14 @@ layout = dbc.CardBody(
                 dbc.Col([example_shop_item("Background 1", "200 points", "/assets/images/Background/bg1.jpg")], width=2),
                 dbc.Col([example_shop_item("Background 2", "200 points", "/assets/images/Background/bg2.jpg")], width=2),
                 dbc.Col([example_shop_item("Background 3", "200 points", "/assets/images/Background/bg3.jpg")], width=2),
+                dbc.Col("", width={"offset": 1}),
             ],
             className="overflow-auto",
             style={"flex-wrap": "nowrap"}
                 
         ),
         html.Br(),
-        dbc.Row((html.H2("Points"))),
+        dbc.Row(dbc.Col(html.H2("Points"), width={"offset": 1})),
         dbc.Row(
             [
                 dbc.Col([example_shop_item("10 points","$1", "/assets/images/Money/money10.jpg")], width=2),

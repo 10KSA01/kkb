@@ -4,6 +4,8 @@ import pandas as pd
 
 # Sample data for DataTables
 recent_quest = {'': ['Completed Quest: Addition Level 3 (7/10)', 'Completed Quest: Subtraction Level 2 (8/10)', 'Completed Quest: Addition Level 1 (10/10)']}
+recent_quest = {'Quest': ['Addition Level 3', 'Subtraction Level 2', 'Addition Level 1 ']}
+
 friend_quest = {'': ['John Completed Quest: Addition Level 3 (5/10)', 'Alice Completed Quest: Subtraction Level 3 (10/10)', 'Bob Completed Quest: Addition Level 3 (1/10)']}
 daily_quest = {'': ['New Quest: Addition Level 4', 'New Quest: Subtraction Level 3', 'New Quest: Multiplication Level 1']}
 your_score = {'': ['Your Score: 3/3, Date: 05/12/2023, Time: 60 seconds', 'Your Score: 3/3, Date: 05/12/2023, Time: 80 seconds', 'Your Score: 3/3, Date: 04/12/2023, Time: 90 seconds', 'Your Score: 3/3, Date: 03/12/2023, Time: 110 seconds', 'Your Score: 3/3, Date: 02/12/2023, Time: 120 seconds', 'Your Score: 2/3, Date: 01/12/2023, Time: 70 seconds', 'Your Score: 2/3, Date: 30/11/2023, Time: 80 seconds', 'Your Score: 2/3, Date: 25/11/2023, Time: 95 seconds']}

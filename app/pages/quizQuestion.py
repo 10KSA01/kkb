@@ -77,7 +77,14 @@ buttons = [
         for n, answer in enumerate(answerSet[pointer])
     ]
 
-
+# layout = dbc.CardBody([
+#     html.Br(),
+#     dbc.Row([
+#         dbc.Col(html.H1("Quiz title"), width={"offset": 1}),
+#         dbc.Col(dbc.Button("Start", href="/quizquestion"),width={"offset": 6})
+#     ]),
+    
+# ])
 layout = dbc.Container([
     # First Row
     dbc.Row([
@@ -193,14 +200,14 @@ def add_score_callback(b1, b2, b3, b4):
     if m > -1:
         #print("ABCD"[mInd])
         if "ABCD"[mInd] == correctSet[q_completed]:
-            with open("temp/cur_quiz_score.tmp", "r") as f_r:
+            with open(score_file_path, "r") as f_r:
                 cur_score = int(f_r.read())
-            with open("temp/cur_quiz_score.tmp", "w") as f_w:
+            with open(score_file_path, "w") as f_w:
                 f_w.write(f"{cur_score + 1}")
 
-        with open("temp/cur_quiz_answered.tmp", "r") as f_r:
+        with open(answer_file_path, "r") as f_r:
             cur_score = int(f_r.read())
-        with open("temp/cur_quiz_answered.tmp", "w") as f_w:
+        with open(answer_file_path, "w") as f_w:
             f_w.write(f"{cur_score + 1}")
 
 
