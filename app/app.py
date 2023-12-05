@@ -4,7 +4,7 @@ from components.navbar import create_navbar
 
 app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP, dbc.icons.BOOTSTRAP], use_pages=True)
 
-app.title = 'KKB'
+app.title = 'Quizi'
 
 navbar = create_navbar()
 
@@ -13,9 +13,8 @@ app.layout = html.Div(
         dbc.Row(
             [
                 navbar,
-                dbc.Row(page_container, style={"display": "flex", "justify-content": "center", "align-items": "center"}),
+                html.Div(page_container),
             ],
-            class_name="g-0"
         ),
     ]
 )
