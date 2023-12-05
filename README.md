@@ -9,7 +9,6 @@
 4. Put ticked off item to bottom of list
 
 # Todo
-- [ ] example task: kaleem
 - [ ] find a list of suitable skills
 - [x] find an example game to use as an example - DUOLINGO
 - [ ] list of classes and subclasses - FIELDS AND JOBS
