@@ -9,6 +9,7 @@ register_page(__name__, path='/')
 
 layout = dbc.CardBody(
     [
+        html.Br(),
         dbc.Row(
             [
                 dbc.Col([example_radar_chart()], width=6),

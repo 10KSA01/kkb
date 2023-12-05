@@ -1,7 +1,6 @@
 from dash import Dash, html, dcc, register_page
 import dash_bootstrap_components as dbc
 import json
-import os
 import platform
 
 file_path = ""
