@@ -1,7 +1,6 @@
 # Thanks arch
 /venv/
-<<<<<<< HEAD
-__pycache__/
-=======
+
 app/*/__pycache__/
->>>>>>> feature/ftui
+
+/.idea/
