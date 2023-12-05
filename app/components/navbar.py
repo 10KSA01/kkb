@@ -18,7 +18,7 @@ def create_navbar():
             ),
             dbc.NavItem(dbc.NavLink("Level 5"))
         ],
-        brand="KKB",
+        brand="Quizi",
         brand_href="/",
         color="primary",
         dark=True,
