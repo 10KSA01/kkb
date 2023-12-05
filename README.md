@@ -10,7 +10,6 @@
 
 # Todo
 - [ ] find a list of suitable skills
-- [x] find an example game to use as an example - DUOLINGO
 - [ ] list of classes and subclasses - FIELDS AND JOBS
 - [ ] lectures and quizes as quests / ways to get currency
 - [ ] ways to spend currency
@@ -23,3 +22,4 @@
 - [ ] cosmetics
 - [ ] daily streak rewards
 - [ ] find diminishing returns calculation and steal
+- [x] find an example game to use as an example - DUOLINGO
