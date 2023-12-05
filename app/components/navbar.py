@@ -4,12 +4,21 @@ import dash_bootstrap_components as dbc
 def create_navbar():
     navbar = dbc.NavbarSimple(
         children=[
-            dbc.NavItem(dbc.NavLink("Main Page", href="/")),
-            dbc.NavItem(dbc.NavLink("Page 1", href="/page1")),
-            dbc.NavItem(dbc.NavLink("Page 2", href="/page2")),
-            dbc.NavItem(dbc.NavLink("Quiz start demo", href="/quizstart")),
+            dbc.NavItem(dbc.NavLink("Home", href="/")),
+            dbc.NavItem(dbc.NavLink("Quiz", href="quizStart")),
+            dbc.NavItem(dbc.NavLink("Market", href="#")),
+            dbc.DropdownMenu(
+                children=[
+                    dbc.DropdownMenuItem("Profile", href="#"),
+                    dbc.DropdownMenuItem("Settings", href="#"),
+                ],
+                nav=True,
+                in_navbar=True,
+                label="temp Icon",
+            ),
+            dbc.NavItem(dbc.NavLink("Level 5"))
         ],
-        brand="KBB",
+        brand="KKB",
         brand_href="/",
         color="primary",
         dark=True,
