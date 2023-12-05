@@ -18,29 +18,37 @@ layout = dbc.CardBody(
             ),
         ]),
         html.Br(),
+        dbc.Row(html.H2("Accessories")),
         dbc.Row(
             [
-                dbc.Col(
-                    [
-                        dbc.Row(
-                            [
-                                dbc.Col([example_shop_item(f"item {i} ${i * 2}")], width=3)
-                                for i in range(1, 9)  # Adjust the range based on the number of items
-                            ],
-                            className="overflow-auto",  # Enable horizontal scrolling
-                            style={"flex-wrap": "nowrap"},  # Prevent items from wrapping to the next line
-                        ),
-                    ],
-                    width=11,
-                    align="center",
-                    style={
-                        "display": "flex", 
-                        "justify-content": "center", 
-                        "align-items": "center", 
-                    }
-                ),
-            ]
+                dbc.Col([example_shop_item("Border 1", "15 points", "/assets/images/borders/border1.jpg")], width=2),
+                dbc.Col([example_shop_item("Border 2", "20 points", "/assets/images/borders/border2.jpg")], width=2),
+                dbc.Col([example_shop_item("Border 3", "50 points", "/assets/images/borders/border3.jpg")], width=2),
+                dbc.Col([example_shop_item("Border 4", "150 points", "/assets/images/borders/border4.jpg")], width=2),
+                dbc.Col([example_shop_item("Border 5", "200 points", "/assets/images/borders/border5.jpg")], width=2),
+                dbc.Col([example_shop_item("Title 1", "100 points", "/assets/images/Titles/title1.png")], width=2),
+                dbc.Col([example_shop_item("Title 2", "100 points", "/assets/images/Titles/title2.png")], width=2),
+                dbc.Col([example_shop_item("Title 3", "100 points", "/assets/images/Titles/title3.png")], width=2),
+                dbc.Col([example_shop_item("Background 1", "200 points", "/assets/images/Background/bg1.jpg")], width=2),
+                dbc.Col([example_shop_item("Background 2", "200 points", "/assets/images/Background/bg2.jpg")], width=2),
+                dbc.Col([example_shop_item("Background 3", "200 points", "/assets/images/Background/bg3.jpg")], width=2),
+            ],
+            className="overflow-auto",
+            style={"flex-wrap": "nowrap"}
+                
         ),
         html.Br(),
+        dbc.Row((html.H2("Points"))),
+        dbc.Row(
+            [
+                dbc.Col([example_shop_item("10 points","$1", "/assets/images/Money/money10.jpg")], width=2),
+                dbc.Col([example_shop_item("50 points","$4", "/assets/images/Money/money50.jpg")], width=2),
+                dbc.Col([example_shop_item("100 points","$7", "/assets/images/Money/money100.jpg")], width=2),
+                dbc.Col([example_shop_item("500 points", "$40", "/assets/images/Money/money500.jpg")], width=2),
+            ],
+            align="center",
+            justify="center"
+        ),
+        html.Br()
     ]
 )

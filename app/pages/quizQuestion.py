@@ -3,7 +3,7 @@ import dash
 from dash import Dash, html, dcc, register_page
 import dash_bootstrap_components as dbc
 from dash.dependencies import Input, Output
-
+import platform
 
 register_page(__name__)
 
@@ -11,9 +11,23 @@ register_page(__name__)
 ###############
 # setup files #
 ###############
-with open("temp/cur_quiz_score.tmp", "w") as f_w:
+
+score_file_path = ""
+answer_file_path = ""
+
+if platform.system() == 'Windows':
+    score_file_path = "app/temp/cur_quiz_score.tmp"
+else:
+    score_file_path = "temp/cur_quiz_score.tmp"
+
+if platform.system() == 'Windows':
+    answer_file_path = "app/temp/cur_quiz_answered.tmp"
+else:
+    answer_file_path = "temp/cur_quiz_answered.tmp"
+
+with open(score_file_path, "w") as f_w:
     f_w.write("0")
-with open("temp/cur_quiz_answered.tmp", "w") as f_w:
+with open(answer_file_path, "w") as f_w:
     f_w.write("0")
 
 
