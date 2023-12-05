@@ -51,3 +51,17 @@ They are used to buy cosmetics.
   - scoreboard
 - radar graph for quiz
 - time limit
+
+## Quiz Middle
+- Kahoot
+
+## Quiz End
+- big level bar that goes up
+- score
+- time
+- points gained
+- shop button
+- retake button
+- next quiz
+- friend scoreboard
+
