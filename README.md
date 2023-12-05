@@ -10,3 +10,14 @@
 
 # Todo
 - [ ] example task: kaleem
+- [ ] find a list of suitable skills
+- [x] find an example game to use as an example - DUOLINGO
+- [ ] list of classes and subclasses - FIELDS AND JOBS
+- [ ] lectures and quizes as quests
+- [ ] scaling xp reqs
+- [ ] some sort of baseline quiz to determine initial levels
+- [ ] level scaling reqs in games
+- [ ] logo
+- [ ] name
+- [ ] colour scheme
+ 
