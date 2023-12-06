@@ -29,7 +29,9 @@ layout = dbc.Container([
 
         dbc.Col(
             dbc.Card([
-                dbc.NavItem(dbc.NavLink("NEXT QUIZ", href="/quizquestion")),
+                dbc.Button([
+                    html.H3("Next Quiz")
+                ], color="primary", style={"width": "100%"}, href="/quizstart"),
             ]),
             width=2 # last 2/12ths of a row
         ),
@@ -41,7 +43,7 @@ layout = dbc.Container([
     dbc.Row([
         dbc.Col([
             dbc.Card([
-                html.H2("Level 9"),
+                html.H2("Level "),
                 dbc.Progress(
                     [
                         dbc.Progress(value=30, color="warning", bar=True),
