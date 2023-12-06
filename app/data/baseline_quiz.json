@@ -68,24 +68,4 @@
     "options": ["Central Processing Unit", "Computer Peripheral Unit", "Control Panel Unit", "Central Program Unit"],
     "answer": "A",
     "skills": ["Tech"]
-}, {
-    "question": "What is a company's financial statement that shows revenues and expenses called?",
-    "options": ["Balance sheet", "Income statement", "Cash flow statement", "Tax return"],
-    "answer": "B",
-    "skills": ["Business"]
-}, {
-    "question": "What does ROI stand for in the context of business?",
-    "options": ["Return on Investment", "Revenue on Income", "Rate of Inflation", "Risk of Investment"],
-    "answer": "A",
-    "skills": ["Business"]
-}, {
-    "question": "In Christianity, what day is celebrated as the birth of Jesus Christ?",
-    "options": ["Easter", "Good Friday", "Christmas", "Epiphany"],
-    "answer": "C",
-    "skills": ["Religion"]
-}, {
-    "question": "In Hinduism, which god is known as the 'Destroyer'?",
-    "options": ["Brahma", "Vishnu", "Shiva", "Ganesh"],
-    "answer": "C",
-    "skills": ["Religion"]
 }]

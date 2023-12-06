@@ -25,8 +25,8 @@ layout = dbc.Card([
     html.Div(
         style={"display": "flex", "justify-content": "center", "align-items": "center", "flex-direction": "column"},
         children = [
-            html.A(dbc.Button("Take me home!", color="success", style={"width": "100%"}),
-                href="/", style={"display": "flex", "width": "90%", "margin": "2vh 2vw"})
+            html.A(dbc.Button("Start taking quizzes", color="success", style={"width": "100%"}),
+                href="/quizselection", style={"display": "flex", "width": "90%", "margin": "2vh 2vw"})
         ]
     )
 
