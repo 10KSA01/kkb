@@ -5,23 +5,24 @@ import dash_bootstrap_components as dbc
 register_page(__name__)
 
 
+
+stars = 3
+stars_unicode = "".join(["★"] * stars + ["☆"] * (3-stars))
+
 # Use the Dash app with a Bootstrap theme
 
 layout = dbc.Container([
     # First Row
     dbc.Row([
-        # First Column in the first row
         dbc.Col(
             dbc.Card([
                 html.H3("Quiz title"),
             ]),
             width=6  # This column takes half of the row
         ),
-
-        # Second Column in the first row
         dbc.Col(
             dbc.Card([
-                html.H3("Difficulty in stars"),
+                html.H3(f"Difficulty: {stars_unicode}"),
             ]),
             width=4
         ),
@@ -40,7 +41,7 @@ layout = dbc.Container([
     dbc.Row([
         dbc.Col([
             dbc.Card([
-                html.H2("Level bar, shows progress in different colour"),
+                html.H2("Level 9"),
                 dbc.Progress(
                     [
                         dbc.Progress(value=30, color="warning", bar=True),
@@ -53,7 +54,7 @@ layout = dbc.Container([
 
         dbc.Col([
             dbc.Card([
-                html.H2("+n XP")
+                html.H2("+27 XP")
             ])
         ], width=3),
     ],
