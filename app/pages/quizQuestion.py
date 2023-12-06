@@ -229,7 +229,7 @@ def add_score_callback(b1, b2, b3, b4):
 
 
         if q_completed == q_questions:
-            print("STOPSTOPSTOP")
+            #print("STOPSTOPSTOP")
 
             q_completed = 0
 

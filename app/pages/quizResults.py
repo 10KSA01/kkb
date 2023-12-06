@@ -158,7 +158,7 @@ def xp_bar_growth(timer_count):
     shown = xp_gain
     shown *= (offset * math.log(((timer_count / slow_rate) + 0.1), 10) + offset)
 
-    print(shown)
+    #print(shown)
 
     if shown > xp_gain:
         return [xp_pre_quiz, xp_gain, True]
@@ -216,7 +216,7 @@ def update_quiz_breakdown(timer_count):
     if pairs == ['']:
         return html.P("No data found. Try completing a quiz!")
 
-    print(pairs)
+    #print(pairs)
 
     qs = [q["question"] for q in raw]
     gs = [g.split()[0] for g in pairs if g != '']
@@ -228,7 +228,7 @@ def update_quiz_breakdown(timer_count):
         "Given": gs
     }
 
-    print(data)
+    #print(data)
 
     df = pd.DataFrame(data)
 
