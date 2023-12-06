@@ -35,7 +35,7 @@ with open(score_file_path, "w") as f_w:
 with open(answer_file_path, "w") as f_w:
     f_w.write("0")
 with open(quiz_json_filename_path, "w") as f_w:
-    f_w.write("baseline_quiz.json")
+    f_w.write("short_eg_quiz.json")
 with open(current_performance_path, "w") as f_w:
     f_w.write("")
 

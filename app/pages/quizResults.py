@@ -159,75 +159,95 @@ layout = html.Div(
                         dbc.Col([example_daily_item("Points", "+15 points", check=False)], width={"size": 2}),
                     ],
                     className="overflow-auto",
-            ),
-            ]
-        ),
-
-        # Score breakdown row
-        html.Div(
-            style={},
-            children=[
-                html.H3("Score: 3/5 (--%)",
-                        id="quizscore"),
-                html.H3("Quiz breakdown"),
-                html.Div([],
-                    id="quiz-breakdown-div"
                 ),
             ]
         ),
 
-        # Scoreboard
+        # div to contain breakdown and friends score
         html.Div(
-            style={},
+            style={
+                "display": "flex",
+                "width": "100%",
+                "justify-content": "space-evenly",
+                "flex-direction": "row",
+            },
+
             children=[
-                dbc.Card(
-                    style={},
-                    children=[
-                        dbc.Tabs(
-                            style={},
-                            children=[
-                                dbc.Tab(
-                                    label="Your Scores",
-                                    tab_id="tab-1",
-                                    children=[
-                                        html.Div(
-                                            style={},
-                                            children=[
-                                                create_scoreboard_list(None)
-                                            ]
-                                        ),
-                                    ]
-                                ),
-                                dbc.Tab(
-                                    label="Friends",
-                                    tab_id="tab-2",
-                                    children=[
-                                        html.Div(
-                                            style={},
-                                            children=[
-                                                create_scoreboard_list("friends")
-                                            ]
-                                        ),
-                                    ]
-                                ),
-                                dbc.Tab(
-                                    label="Global",
-                                    tab_id="tab-3",
-                                    children=[
-                                        html.Div(
-                                            style={},
-                                            children=[
-                                                create_scoreboard_list("friends")
-                                            ]
-                                        ),
-                                    ]
-                                ),
-                            ],
-                        )
-                    ]
-                )
-            ]
-        )
+
+            # Score breakdown row
+            html.Div(
+                style={
+                    "width": "45vw",
+                    #"border": "solid black 1px"
+                },
+                children=[
+                    html.Div(children=[
+                        html.H3("Score: 3/5 (--%)",
+                                id="quizscore"),
+                        html.H3("Quiz breakdown"),
+                        html.Div([],
+                            id="quiz-breakdown-div"
+                        ),
+                    ])
+                ]
+            ),
+
+            # Scoreboard
+            html.Div(
+                style={
+                    "width": "45vw"
+                },
+                children=[
+                    dbc.Card(
+                        style={},
+                        children=[
+                            dbc.Tabs(
+                                style={},
+                                children=[
+                                    dbc.Tab(
+                                        label="Your Scores",
+                                        tab_id="tab-1",
+                                        children=[
+                                            html.Div(
+                                                style={},
+                                                children=[
+                                                    create_scoreboard_list(None)
+                                                ]
+                                            ),
+                                        ]
+                                    ),
+                                    dbc.Tab(
+                                        label="Friends",
+                                        tab_id="tab-2",
+                                        children=[
+                                            html.Div(
+                                                style={},
+                                                children=[
+                                                    create_scoreboard_list("friends")
+                                                ]
+                                            ),
+                                        ]
+                                    ),
+                                    dbc.Tab(
+                                        label="Global",
+                                        tab_id="tab-3",
+                                        children=[
+                                            html.Div(
+                                                style={},
+                                                children=[
+                                                    create_scoreboard_list("friends")
+                                                ]
+                                            ),
+                                        ]
+                                    ),
+                                ],
+                            )
+                        ]
+                    )
+                ]
+            ),
+
+        ])
 
 
 
