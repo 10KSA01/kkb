@@ -1,19 +1,32 @@
 import dash
-from dash import Dash, html, dcc, register_page
+from dash import Dash, html, dcc, register_page, dash_table
 import dash_bootstrap_components as dbc
 from dash.dependencies import Input, Output
 from components.Items import example_daily_item
 import math
 import platform
+import json
+import pandas as pd
+
 
 if platform.system() == 'Windows':
     score_file_path = "app/temp/cur_quiz_score.tmp"
     answer_file_path = "app/temp/cur_quiz_answered.tmp"
+    quiz_json_filename_path = "app/temp/cur_quiz_json.tmp"
+    data_path = "app/data"
+    current_performance_path = "app/temp/cur_quiz_performance.tmp"
 else:
     score_file_path = "temp/cur_quiz_score.tmp"
     answer_file_path = "temp/cur_quiz_answered.tmp"
+    quiz_json_filename_path = "temp/cur_quiz_json.tmp"
+    data_path = "data"
+    current_performance_path = "temp/cur_quiz_performance.tmp"
+
+
 
 register_page(__name__)
+
+
 
 stars = 3
 stars_unicode = "".join(["★"] * stars + ["☆"] * (3-stars))
@@ -33,25 +46,25 @@ def create_scoreboard_list(type):
         style={},
         children=[
             create_scoreboard_list_item(
-                1, 
+                1,
                 friend_names[0],
                 80,
                 "10:34"
             ),
             create_scoreboard_list_item(
-                2, 
+                2,
                 friend_names[1],
                 80,
                 "12:34"
             ),
             create_scoreboard_list_item(
-                3, 
+                3,
                 friend_names[2],
                 40,
                 "6:34"
             ),
             create_scoreboard_list_item(
-                4, 
+                4,
                 friend_names[3],
                 8,
                 "1:34"
@@ -78,7 +91,7 @@ layout = html.Div(
         "padding": "2vh 2vw"
     },
     children=[
-        
+
         # Top row with quiz name and next button
         html.Div(
             style={
@@ -88,13 +101,13 @@ layout = html.Div(
             children=[
                 html.H3("Quiz Name"),
                 dbc.Button(
-                    style={"textAlign": "left"}, 
+                    style={"textAlign": "left"},
                     children=[
                         html.Span("Next Quiz", style={"fontSize": "1.2em"}),
                         html.Br(),
                         html.Span("Algebra"),
                     ],
-                    color="primary", 
+                    color="primary",
                     href="/quizstart"
                 ),
             ]
@@ -146,72 +159,95 @@ layout = html.Div(
                         dbc.Col([example_daily_item("Points", "+15 points", check=False)], width={"size": 2}),
                     ],
                     className="overflow-auto",
+                ),
+            ]
+        ),
+
+        # div to contain breakdown and friends score
+        html.Div(
+            style={
+                "display": "flex",
+                "width": "100%",
+                "justify-content": "space-evenly",
+                "flex-direction": "row",
+            },
+
+            children=[
+
+            # Score breakdown row
+            html.Div(
+                style={
+                    "width": "45vw",
+                    #"border": "solid black 1px"
+                },
+                children=[
+                    html.Div(children=[
+                        html.H3("Score: 3/5 (--%)",
+                                id="quizscore"),
+                        html.H3("Quiz breakdown"),
+                        html.Div([],
+                            id="quiz-breakdown-div"
+                        ),
+                    ])
+                ]
             ),
-            ]
-        ),
 
-        # Score breakdown row
-        html.Div(
-            style={},
-            children=[
-                html.H3("Score: 3/5 (60%)"),
-                html.H3("Quiz breakdown"),
-                html.P("Maybe by question")
-            ]
-        ),
+            # Scoreboard
+            html.Div(
+                style={
+                    "width": "45vw"
+                },
+                children=[
+                    dbc.Card(
+                        style={},
+                        children=[
+                            dbc.Tabs(
+                                style={},
+                                children=[
+                                    dbc.Tab(
+                                        label="Your Scores",
+                                        tab_id="tab-1",
+                                        children=[
+                                            html.Div(
+                                                style={},
+                                                children=[
+                                                    create_scoreboard_list(None)
+                                                ]
+                                            ),
+                                        ]
+                                    ),
+                                    dbc.Tab(
+                                        label="Friends",
+                                        tab_id="tab-2",
+                                        children=[
+                                            html.Div(
+                                                style={},
+                                                children=[
+                                                    create_scoreboard_list("friends")
+                                                ]
+                                            ),
+                                        ]
+                                    ),
+                                    dbc.Tab(
+                                        label="Global",
+                                        tab_id="tab-3",
+                                        children=[
+                                            html.Div(
+                                                style={},
+                                                children=[
+                                                    create_scoreboard_list("friends")
+                                                ]
+                                            ),
+                                        ]
+                                    ),
+                                ],
+                            )
+                        ]
+                    )
+                ]
+            ),
 
-        # Scoreboard
-        html.Div(
-            style={},
-            children=[
-                dbc.Card(
-                    style={},
-                    children=[
-                        dbc.Tabs(
-                            style={},
-                            children=[
-                                dbc.Tab(
-                                    label="Your Scores", 
-                                    tab_id="tab-1",
-                                    children=[
-                                        html.Div(
-                                            style={},
-                                            children=[
-                                                create_scoreboard_list(None)
-                                            ]
-                                        ),
-                                    ]
-                                ),
-                                dbc.Tab(
-                                    label="Friends", 
-                                    tab_id="tab-2",
-                                    children=[
-                                        html.Div(
-                                            style={},
-                                            children=[
-                                                create_scoreboard_list("friends")
-                                            ]
-                                        ),
-                                    ]
-                                ),
-                                dbc.Tab(
-                                    label="Global", 
-                                    tab_id="tab-3",
-                                    children=[
-                                        html.Div(
-                                            style={},
-                                            children=[
-                                                create_scoreboard_list("friends")
-                                            ]
-                                        ),
-                                    ]
-                                ),
-                            ],
-                        )
-                    ]
-                )
-            ]
-        )
+        ])
 
 
 
@@ -336,7 +372,7 @@ def xp_bar_growth(timer_count):
     shown = xp_gain
     shown *= (offset * math.log(((timer_count / slow_rate) + 0.1), 10) + offset)
 
-    print(shown)
+    #print(shown)
 
     if shown > xp_gain:
         return [xp_pre_quiz, xp_gain, True]
@@ -372,3 +408,57 @@ def update_score(timer_count, old):
 
     return f"Score: {correct}/{answered} ({((correct * 100) // answered) if answered != 0 else '--'}%)"
 
+
+
+@dash.callback(
+    Output("quiz-breakdown-div", "children"),
+    Input("xp-bar-timer", "n_intervals")
+)
+def update_quiz_breakdown(timer_count):
+
+    # read question data from json
+    with open(quiz_json_filename_path, "r") as f_r:
+        with open(f"{data_path}/{f_r.read().strip()}", "r") as json_r:
+            try:
+                raw = json.loads(json_r.read().strip())
+            except json.JSONDecodeError as e:
+                print(f"Error decoding JSON: {e}")
+
+    with open(current_performance_path, "r") as f_r:
+        pairs = f_r.read().split("\n")
+
+    if pairs == ['']:
+        return html.P("No data found. Try completing a quiz!")
+
+    #print(pairs)
+
+    qs = [q["question"] for q in raw]
+    gs = [g.split()[0] for g in pairs if g != '']
+    cs = [g.split()[1] for g in pairs if g != '']
+
+    data = {
+        "Question": qs,
+        "Correct": cs,
+        "Given": gs
+    }
+
+    #print(data)
+
+    df = pd.DataFrame(data)
+
+    return [dash_table.DataTable(
+        id="quiz-breakdown",
+        columns=[
+            {"name": "Question", "id": "Question"},
+            {"name": "Correct answer", "id": "Correct"},
+            {"name": "Your answer", "id": "Given"},
+        ],
+        data=df.to_dict('records'),
+        style_table={'height': '450px'},
+        style_cell={'textAlign': 'left'},
+        style_data={
+            'whiteSpace': 'normal',
+            'height': 'auto',
+            'lineHeight': '15px'
+        },
+    )]
