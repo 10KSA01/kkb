@@ -43,12 +43,15 @@ df = pd.concat([df1, df2], ignore_index=True)
 fig = px.line_polar(df, r='level', theta='skills', color="Type", line_close=True)
 
 layout = dbc.CardBody(
-    [
+    style={
+        "padding": "0vh 1vw",
+    },
+    children=[
         html.Br(),
         dbc.Row([
                 dbc.Col([   
                     dbc.Card([
-                        dbc.CardHeader("Current Stats"),
+                        dbc.CardHeader("Your Stats", style={"fontSize": "1.2em"}),
                         dcc.Graph(
                             figure=fig,
                             style={'width': '100%'}
@@ -62,13 +65,30 @@ layout = dbc.CardBody(
         html.Br(),
         dbc.Row(
             [
+                dbc.Col([example_daily_item("Day 1", "+15 points", True)], width={"size": 2}),
+                dbc.Col([example_daily_item("Day 2", "+15 points", True)], width={"size": 2}),
+                dbc.Col([example_daily_item("Day 3", "+20 points", True)], width={"size": 2}),
+                dbc.Col([example_daily_item("Day 4", "New Title: Beginner", False)], width={"size": 2}),
+                dbc.Col([example_daily_item("Day 5", "New Title: Hard Worker", False)], width={"size": 2}),
+                dbc.Col([example_daily_item("Day 6", "+15 points", False)], width={"size": 2}),
+                dbc.Col([example_daily_item("Day 7", "New Title: Weekly Challenge", False)], width={"size": 2}),
+            ],
+            className="overflow-auto",
+            style={"flex-wrap": "nowrap"}
+        ),
+        html.Br(),
+        dbc.Row(
+            style={
+                "padding": "0vh 0.5vw",
+            },
+            children=[
                 dbc.Card(
                     [
-                        dbc.CardHeader("Recommendations"),
+                        dbc.CardHeader("Recommendations", style={"fontSize": "1.2em"}),
                         dbc.CardBody(
                             [
                                 dbc.Row([
-                                                                    dbc.Col([
+                                    dbc.Col([
                                     dbc.Row([
                                         html.P("Here are some recommended fields based on your current skills:"),
                                     ]),
