@@ -53,3 +53,20 @@ def toggle_modal(*args):
         modal_index = n_clicks_indices[0]
         return [not is_open if i == modal_index else is_open for i, is_open in enumerate(args[-len(items):])]
     return [False] * len(items)
+
+
+def example_daily_item(day, xp, check):
+    card = dbc.Card(
+        [
+            dbc.CardHeader(day),
+            dbc.CardBody(
+                [
+                    html.H4(xp, className="card-title"),
+                    html.H4(className="bi bi-check-lg") if check else None,
+                ]
+            ),
+        ],
+        className="d-grid mx-auto"
+    )
+    
+    return card
