@@ -3,6 +3,16 @@ from dash import Dash, html, dcc, register_page
 import dash_bootstrap_components as dbc
 from dash.dependencies import Input, Output
 import math
+import platform
+
+
+if platform.system() == 'Windows':
+    score_file_path = "app/temp/cur_quiz_score.tmp"
+    answer_file_path = "app/temp/cur_quiz_answered.tmp"
+else:
+    score_file_path = "temp/cur_quiz_score.tmp"
+    answer_file_path = "temp/cur_quiz_answered.tmp"
+
 
 
 register_page(__name__)
@@ -11,6 +21,12 @@ register_page(__name__)
 
 stars = 3
 stars_unicode = "".join(["★"] * stars + ["☆"] * (3-stars))
+
+with open(score_file_path, "r") as f_r:
+    correct = int(f_r.read())
+with open(answer_file_path, "r") as f_r:
+    answered = int(f_r.read())
+
 
 # Use the Dash app with a Bootstrap theme
 
@@ -53,12 +69,12 @@ layout = dbc.Container([
                         dbc.Progress(value=10, color="success", bar=True, id="xp-bar-growth"),
                     ]
                 ),
-                """dcc.Interval(
+                dcc.Interval(
                     id="xp-bar-timer",
-                    interval=100000,  # Update every millisecond
+                    interval=100,  # Update every millisecond
                     n_intervals=0,
                     disabled=False
-                )"""
+                )
             ])
 
         ], width=9),
@@ -77,7 +93,8 @@ layout = dbc.Container([
 
             dbc.Row([
                 dbc.Card([
-                    html.H1("SCORE!")
+                    html.H3(f"Score: {correct}/{answered} ({((correct * 100) // answered) if answered != 0 else '--'}%)",
+                            id="quizscore")
                 ]),
             ]),
 
@@ -89,12 +106,6 @@ layout = dbc.Container([
                 ]),
             ]),
 
-            dbc.Row([
-
-                dbc.Card([
-                    dbc.NavItem(dbc.NavLink("next quiz button", href="/quizstart")),
-                ]),
-            ]),
         ],
             width=6,
         ),
@@ -115,7 +126,7 @@ layout = dbc.Container([
     ),
 ])
 
-"""
+
 @dash.callback(
     [
         Output("xp-bar-base", "value"),
@@ -123,7 +134,7 @@ layout = dbc.Container([
         Output("xp-bar-timer", "disabled"),
     ],
     [
-        Input("xp-bar-timer", "n_intervals")
+        Input("xp-bar-timer", "n_intervals"),
     ]
 )
 def xp_bar_growth(timer_count):
@@ -146,4 +157,30 @@ def xp_bar_growth(timer_count):
         xp_pre_quiz, min(xp_gain, shown), False
     ]
     
-    """
+@dash.callback(
+    Output("quizscore", "children"),
+    [
+        Input("xp-bar-timer", "n_intervals"),
+        Input("quizscore", "children"),
+
+    ]
+)
+def update_score(timer_count, old):
+    global correct
+    global answered
+
+    with open(score_file_path, "r") as f_r:
+        correct = int(f_r.read())
+    with open(answer_file_path, "r") as f_r:
+        answered = int(f_r.read())
+
+    if answered == 0:
+        with open(score_file_path, "r") as f_w:
+            f_w.write(f"0")
+        with open(answer_file_path, "r") as f_w:
+            f_w.write(f"0")
+
+        return old
+
+    return f"Score: {correct}/{answered} ({((correct * 100) // answered) if answered != 0 else '--'}%)"
+
