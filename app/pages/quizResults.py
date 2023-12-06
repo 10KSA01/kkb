@@ -1,17 +1,25 @@
 import dash
-from dash import Dash, html, dcc, register_page
+from dash import Dash, html, dcc, register_page, dash_table
 import dash_bootstrap_components as dbc
 from dash.dependencies import Input, Output
 import math
 import platform
+import json
+import pandas as pd
 
 
 if platform.system() == 'Windows':
     score_file_path = "app/temp/cur_quiz_score.tmp"
     answer_file_path = "app/temp/cur_quiz_answered.tmp"
+    quiz_json_filename_path = "app/temp/cur_quiz_json.tmp"
+    data_path = "app/data"
+    current_performance_path = "app/temp/cur_quiz_performance.tmp"
 else:
     score_file_path = "temp/cur_quiz_score.tmp"
     answer_file_path = "temp/cur_quiz_answered.tmp"
+    quiz_json_filename_path = "temp/cur_quiz_json.tmp"
+    data_path = "data"
+    current_performance_path = "temp/cur_quiz_performance.tmp"
 
 
 
@@ -102,7 +110,9 @@ layout = dbc.Container([
 
                 dbc.Card([
                     html.H3("Quiz breakdown"),
-                    html.P("Maybe by question")
+                    html.Div([],
+                        id="quiz-breakdown-div"
+                    ),
                 ]),
             ]),
 
@@ -184,3 +194,57 @@ def update_score(timer_count, old):
 
     return f"Score: {correct}/{answered} ({((correct * 100) // answered) if answered != 0 else '--'}%)"
 
+
+
+@dash.callback(
+    Output("quiz-breakdown-div", "children"),
+    Input("xp-bar-timer", "n_intervals")
+)
+def update_quiz_breakdown(timer_count):
+
+    # read question data from json
+    with open(quiz_json_filename_path, "r") as f_r:
+        with open(f"{data_path}/{f_r.read().strip()}", "r") as json_r:
+            try:
+                raw = json.loads(json_r.read().strip())
+            except json.JSONDecodeError as e:
+                print(f"Error decoding JSON: {e}")
+
+    with open(current_performance_path, "r") as f_r:
+        pairs = f_r.read().split("\n")
+
+    if pairs == ['']:
+        return html.P("No data found. Try completing a quiz!")
+
+    print(pairs)
+
+    qs = [q["question"] for q in raw]
+    gs = [g.split()[0] for g in pairs if g != '']
+    cs = [g.split()[1] for g in pairs if g != '']
+
+    data = {
+        "Question": qs,
+        "Correct": cs,
+        "Given": gs
+    }
+
+    print(data)
+
+    df = pd.DataFrame(data)
+
+    return [dash_table.DataTable(
+        id="quiz-breakdown",
+        columns=[
+            {"name": "Question", "id": "Question"},
+            {"name": "Correct answer", "id": "Correct"},
+            {"name": "Your answer", "id": "Given"},
+        ],
+        data=df.to_dict('records'),
+        style_table={'height': '450px'},
+        style_cell={'textAlign': 'left'},
+        style_data={
+            'whiteSpace': 'normal',
+            'height': 'auto',
+            'lineHeight': '15px'
+        },
+    )]
