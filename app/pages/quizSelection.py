@@ -125,7 +125,7 @@ def create_quiz_card(title, subject, difficulty):
         ]),
 
         dbc.CardFooter(
-            dbc.Button("Take Quiz", color="primary", style={"width": "100%"})
+            dbc.Button("Take Quiz", color="primary", style={"width": "100%"}, href="/quizstart")
         )
 
     ])

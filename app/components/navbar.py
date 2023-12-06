@@ -29,8 +29,8 @@ def create_navbar():
         ],
         brand=logo_element,
         brand_href="/",
-        color="primary",
-        dark=True,
+        color="light",
+        light=True,
         fluid=True,
         style={"padding": "0.5vh 2vw"}
     )

@@ -43,12 +43,15 @@ df = pd.concat([df1, df2], ignore_index=True)
 fig = px.line_polar(df, r='level', theta='skills', color="Type", line_close=True)
 
 layout = dbc.CardBody(
-    [
+    style={
+        "padding": "0vh 1vw",
+    },
+    children=[
         html.Br(),
         dbc.Row([
                 dbc.Col([   
                     dbc.Card([
-                        dbc.CardHeader("Current Stats"),
+                        dbc.CardHeader("Your Stats"),
                         dcc.Graph(
                             figure=fig,
                             style={'width': '100%'}
@@ -68,7 +71,7 @@ layout = dbc.CardBody(
                         dbc.CardBody(
                             [
                                 dbc.Row([
-                                                                    dbc.Col([
+                                    dbc.Col([
                                     dbc.Row([
                                         html.P("Here are some recommended fields based on your current skills:"),
                                     ]),
