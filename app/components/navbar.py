@@ -23,8 +23,8 @@ def create_navbar():
                 label="Profile",
             ),
             dbc.NavItem(dbc.NavLink("Level 66")),
-            dbc.NavItem([dbc.NavLink("Points 455")]),
-            dbc.NavItem(dbc.NavLink(className="bi bi-coin")),
+            dbc.NavItem(dbc.NavLink(className="bi bi-coin"), style={"marginRight": "-0.2vw"}),
+            dbc.NavItem([dbc.NavLink("455")]),
             
         ],
         brand=logo_element,

@@ -51,7 +51,7 @@ layout = dbc.CardBody(
         dbc.Row([
                 dbc.Col([   
                     dbc.Card([
-                        dbc.CardHeader("Your Stats"),
+                        dbc.CardHeader("Your Stats", style={"fontSize": "1.2em"}),
                         dcc.Graph(
                             figure=fig,
                             style={'width': '100%'}
@@ -64,10 +64,13 @@ layout = dbc.CardBody(
         ),
         html.Br(),
         dbc.Row(
-            [
+            style={
+                "padding": "0vh 0.5vw",
+            },
+            children=[
                 dbc.Card(
                     [
-                        dbc.CardHeader("Recommendations"),
+                        dbc.CardHeader("Recommendations", style={"fontSize": "1.2em"}),
                         dbc.CardBody(
                             [
                                 dbc.Row([
