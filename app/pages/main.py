@@ -62,6 +62,33 @@ layout = dbc.CardBody(
         html.Br(),
         dbc.Row(
             [
+                dbc.Col([example_daily_item("Day 1", "+15 points", True)], width={"size": 2}),
+                dbc.Col([example_daily_item("Day 2", "+15 points", True)], width={"size": 2}),
+                dbc.Col([example_daily_item("Day 3", "+20 points", True)], width={"size": 2}),
+                dbc.Col([example_daily_item("Day 4", "New Title: Beginner", False)], width={"size": 2}),
+                dbc.Col([example_daily_item("Day 5", "New Title: Hard Worker", False)], width={"size": 2}),
+                dbc.Col([example_daily_item("Day 6", "+15 points", False)], width={"size": 2}),
+                dbc.Col([example_daily_item("Day 7", "New Title: Weekly Challenge", False)], width={"size": 2}),
+            ],
+            className="overflow-auto",
+            style={"flex-wrap": "nowrap"}
+        ),
+        html.Br(),
+        dbc.Row(
+            [    
+                dbc.Col([example_daily_quest()], width=6),
+                dbc.Col([
+                    dbc.Row([example_card("Recommended Field", "Computer Science")]),
+                    html.Br(),
+                    dbc.Row([example_card("Recommended Job", "Software Engineer")]),
+                ], width=6)
+                
+            ],
+            align="center"
+        ),
+        html.Br(),
+        dbc.Row(
+            [
                 dbc.Card(
                     [
                         dbc.CardHeader("Recommendations"),
