@@ -19,9 +19,9 @@ stars = 3
 stars_unicode = "".join(["★"] * stars + ["☆"] * (3-stars))
 
 with open(score_file_path, "r") as f_r:
-    correct = int(f_r.read())
+    correct = int(float(f_r.read()))
 with open(answer_file_path, "r") as f_r:
-    answered = int(f_r.read())
+    answered = int(float(f_r.read()))
 
 def create_scoreboard_list(type):
     if type == "friends":
