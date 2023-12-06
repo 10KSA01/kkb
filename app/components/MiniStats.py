@@ -4,7 +4,7 @@ from dash import html
 
 card_icon = {
     "textAlign": "center",
-    "fontSize": 30,
+    "fontSize": "1em",
     "margin": "auto",
 }
 def mini_stat(icon, text):
