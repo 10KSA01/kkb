@@ -3,10 +3,9 @@ import dash_bootstrap_components as dbc
 import pandas as pd
 
 # Sample data for DataTables
-recent_quest = {'': ['Completed Quest: Addition Level 3 (7/10)', 'Completed Quest: Subtraction Level 2 (8/10)', 'Completed Quest: Addition Level 1 (10/10)']}
-recent_quest = {'Quest': ['Addition Level 3', 'Subtraction Level 2', 'Addition Level 1 ']}
-
-friend_quest = {'': ['John Completed Quest: Addition Level 3 (5/10)', 'Alice Completed Quest: Subtraction Level 3 (10/10)', 'Bob Completed Quest: Addition Level 3 (1/10)']}
+# recent_quest = {'': ['Completed Quest: Addition Level 3 (7/10)', 'Completed Quest: Subtraction Level 2 (8/10)', 'Completed Quest: Addition Level 1 (10/10)']}
+recent_quest = {'Quest': ['Algebra Level 2', 'Calculus Level 3', 'Addition Level 1'], 'Difficulty': ['Hard', 'Hard', 'Easy'], 'Score': ['14/20 in 166 seconds', '4/10 in 214 seconds', '10/10 in 60 seconds']}
+friend_quest = {'Friend':['John', 'Alice', 'Bob'], 'Quest': ['Algebra Level 2', 'Calculus Level 3', 'Addition Level 1'], 'Difficulty': ['Hard', 'Hard', 'Easy'], 'Score': ['14/20 in 166 seconds', '4/10 in 214 seconds', '10/10 in 60 seconds']}
 daily_quest = {'': ['New Quest: Addition Level 4', 'New Quest: Subtraction Level 3', 'New Quest: Multiplication Level 1']}
 your_score = {'': ['Your Score: 3/3, Date: 05/12/2023, Time: 60 seconds', 'Your Score: 3/3, Date: 05/12/2023, Time: 80 seconds', 'Your Score: 3/3, Date: 04/12/2023, Time: 90 seconds', 'Your Score: 3/3, Date: 03/12/2023, Time: 110 seconds', 'Your Score: 3/3, Date: 02/12/2023, Time: 120 seconds', 'Your Score: 2/3, Date: 01/12/2023, Time: 70 seconds', 'Your Score: 2/3, Date: 30/11/2023, Time: 80 seconds', 'Your Score: 2/3, Date: 25/11/2023, Time: 95 seconds']}
 friend_score = {'': ['John Score: 3/3, Date: 05/12/2023, Time: 70 seconds', 'Alice Score: 3/3, Date: 05/12/2023, Time: 82 seconds', 'Bob Score: 3/3, Date: 04/12/2023, Time: 98 seconds', 'Bob Score: 3/3, Date: 03/12/2023, Time: 113 seconds', 'Alice Score: 3/3, Date: 02/12/2023, Time: 120 seconds', 'John Score: 2/3, Date: 01/12/2023, Time: 71 seconds', 'Alice Score: 2/3, Date: 30/11/2023, Time: 82 seconds', 'John Score: 2/3, Date: 25/11/2023, Time: 98 seconds']}
@@ -31,7 +30,7 @@ def example_activity_friends():
                                 id='table-1',
                                 columns=[{'name': col, 'id': col} for col in df_recent_quest.columns],
                                 data=df_recent_quest.to_dict('records'),
-                                style_table={'height': '410px'},
+                                style_table={'height': '450px'},
                                 style_cell={'textAlign': 'left'}
                             ),
                         ]),
@@ -42,7 +41,7 @@ def example_activity_friends():
                                 id='table-2',
                                 columns=[{'name': col, 'id': col} for col in df_friend_quest.columns],
                                 data=df_friend_quest.to_dict('records'),
-                                style_table={'height': '410px'},
+                                style_table={'height': '450px'},
                                 style_cell={'textAlign': 'left'}
                             ),
                         ]),

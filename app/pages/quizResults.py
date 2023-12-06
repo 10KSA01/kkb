@@ -1,5 +1,8 @@
+import dash
 from dash import Dash, html, dcc, register_page
 import dash_bootstrap_components as dbc
+from dash.dependencies import Input, Output
+import math
 
 
 register_page(__name__)
@@ -43,13 +46,19 @@ layout = dbc.Container([
     dbc.Row([
         dbc.Col([
             dbc.Card([
-                html.H2("Level "),
+                html.H2("Level 9"),
                 dbc.Progress(
                     [
-                        dbc.Progress(value=30, color="warning", bar=True),
-                        dbc.Progress(value=15, color="success", bar=True),
+                        dbc.Progress(value=0, color="warning", bar=True, id="xp-bar-base"),
+                        dbc.Progress(value=10, color="success", bar=True, id="xp-bar-growth"),
                     ]
-                )
+                ),
+                """dcc.Interval(
+                    id="xp-bar-timer",
+                    interval=100000,  # Update every millisecond
+                    n_intervals=0,
+                    disabled=False
+                )"""
             ])
 
         ], width=9),
@@ -106,4 +115,35 @@ layout = dbc.Container([
     ),
 ])
 
+"""
+@dash.callback(
+    [
+        Output("xp-bar-base", "value"),
+        Output("xp-bar-growth", "value"),
+        Output("xp-bar-timer", "disabled"),
+    ],
+    [
+        Input("xp-bar-timer", "n_intervals")
+    ]
+)
+def xp_bar_growth(timer_count):
 
+    # all arbitrary (and static)
+    xp_pre_quiz = 35
+    xp_gain = 20
+    slow_rate = 500 # damper
+    offset = 8
+
+    shown = xp_gain
+    shown *= (offset * math.log(((timer_count / slow_rate) + 0.1), 10) + offset)
+
+    print(shown)
+
+    if shown > xp_gain:
+        return [xp_pre_quiz, xp_gain, True]
+
+    return [
+        xp_pre_quiz, min(xp_gain, shown), False
+    ]
+    
+    """
