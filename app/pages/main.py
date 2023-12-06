@@ -78,19 +78,6 @@ layout = dbc.CardBody(
         ),
         html.Br(),
         dbc.Row(
-            [    
-                dbc.Col([example_daily_quest()], width=6),
-                dbc.Col([
-                    dbc.Row([example_card("Recommended Field", "Computer Science")]),
-                    html.Br(),
-                    dbc.Row([example_card("Recommended Job", "Software Engineer")]),
-                ], width=6)
-                
-            ],
-            align="center"
-        ),
-        html.Br(),
-        dbc.Row(
             style={
                 "padding": "0vh 0.5vw",
             },
