@@ -12,7 +12,8 @@ def create_navbar():
         style={
             "padding": "0.5vh 2vw",
             "height": "10vh",
-            "lineHeight": "5vh"
+            "lineHeight": "5vh",
+            "fontSize": "1.2em"
         },
         children=[
             dbc.NavItem(dbc.NavLink("Home", href="/", style={"marginTop": "1.5vh"})),
