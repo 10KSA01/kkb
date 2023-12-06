@@ -4,6 +4,7 @@ from dash import Dash, html, dcc, register_page
 import dash_bootstrap_components as dbc
 from dash.dependencies import Input, Output
 import platform
+import json
 
 register_page(__name__)
 
@@ -17,40 +18,34 @@ answer_file_path = ""
 
 if platform.system() == 'Windows':
     score_file_path = "app/temp/cur_quiz_score.tmp"
+    answer_file_path = "app/temp/cur_quiz_answered.tmp"
+    quiz_json_filename_path = "app/temp/cur_quiz_json.tmp"
+    data_path = "app/data"
 else:
     score_file_path = "temp/cur_quiz_score.tmp"
-
-if platform.system() == 'Windows':
-    answer_file_path = "app/temp/cur_quiz_answered.tmp"
-else:
     answer_file_path = "temp/cur_quiz_answered.tmp"
+    quiz_json_filename_path = "temp/cur_quiz_json.tmp"
+    data_path = "data"
+
 
 with open(score_file_path, "w") as f_w:
     f_w.write("0")
 with open(answer_file_path, "w") as f_w:
     f_w.write("0")
+with open(quiz_json_filename_path, "w") as f_w:
+    f_w.write("baseline_quiz.json")
 
 
-#TODO: MASSIVE MAKE THIS READ FROM JSON
-#  or similar, maybe do object based approach, with each question having
-#  a question, answers and a correct value
-questionSet = [
-    "What is the past tense of the verb 'to go'?",
-    "Which of the following is a synonym for 'happy'?",
-    "What is the result of 6 multiplied by 9?",
-]
-answerSet = [
-    ["Went", "Goed", "Gone", "Going"],
-    ["Sad", "Joyful", "Angry", "Tired"],
-    ["15", "42", "54", "63"],
-]
-correctSet = [
-    "A",
-    "B",
-    "C",
-]
+with open(quiz_json_filename_path, "r") as f_r:
+    with open(f"{data_path}/{f_r.read().strip()}", "r") as json_r:
+        try:
+            raw = json.loads(json_r.read().strip())
+            questionSet = [raw[n]["question"] for n in range(len(raw))]
+            answerSet = [raw[n]["options"] for n in range(len(raw))]
+            correctSet = [raw[n]["answer"] for n in range(len(raw))]
+        except json.JSONDecodeError as e:
+            print(f"Error decoding JSON: {e}")
 
-pointer = 0
 
 c_answers = 0
 
@@ -58,10 +53,12 @@ c_answers = 0
 #correct = "A"
 q_completed = 0
 q_questions = len(questionSet)
-stars = 2
 
+stars = 3
 stars_unicode = "".join(["★"] * stars + ["☆"] * (3-stars))
 
+# only runs on page load
+# so can use answerSet[0]
 buttons = [
         dbc.Row([
             dbc.Card([
@@ -74,7 +71,7 @@ buttons = [
 
             ])
         ])
-        for n, answer in enumerate(answerSet[pointer])
+        for n, answer in enumerate(answerSet[0])
     ]
 
 # layout = dbc.CardBody([
@@ -190,6 +187,15 @@ def add_score_callback(b1, b2, b3, b4):
     global q_completed
     global q_questions
 
+    #with open(score_file_path, "r") as f_r:
+    #    q_completed = int(f_r.read())
+    #with open(answer_file_path, "r") as f_r:
+    #    q_questions = int(f_r.read())
+
+    # would read length of json array every time
+    # however, for demo, we set to 10 and pray
+    q_questions = len(questionSet)
+
 
     bs = [(n if n is not None else -1) for n in [b1, b2, b3, b4]]
     m = max(bs)
@@ -216,6 +222,8 @@ def add_score_callback(b1, b2, b3, b4):
 
         if q_completed == q_questions:
             print("STOPSTOPSTOP")
+
+            q_completed = 0
 
             return [None] * 10 + ["/quizresults"]
 
