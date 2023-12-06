@@ -36,30 +36,6 @@ with open(quiz_json_filename_path, "w") as f_w:
     f_w.write("baseline_quiz.json")
 
 
-
-
-
-
-#TODO: MASSIVE MAKE THIS READ FROM JSON
-#  or similar, maybe do object based approach, with each question having
-#  a question, answers and a correct value
-questionSet = [
-    "What is the past tense of the verb 'to go'?",
-    "Which of the following is a synonym for 'happy'?",
-    "What is the result of 6 multiplied by 9?",
-]
-answerSet = [
-    ["Went", "Goed", "Gone", "Going"],
-    ["Sad", "Joyful", "Angry", "Tired"],
-    ["15", "42", "54", "63"],
-]
-correctSet = [
-    "A",
-    "B",
-    "C",
-]
-
-
 with open(quiz_json_filename_path, "r") as f_r:
     with open(f"{data_path}/{f_r.read().strip()}", "r") as json_r:
         try:
@@ -77,8 +53,8 @@ c_answers = 0
 #correct = "A"
 q_completed = 0
 q_questions = len(questionSet)
-stars = 2
 
+stars = 3
 stars_unicode = "".join(["★"] * stars + ["☆"] * (3-stars))
 
 # only runs on page load
@@ -211,7 +187,7 @@ def add_score_callback(b1, b2, b3, b4):
 
     # would read length of json array every time
     # however, for demo, we set to 10 and pray
-    q_questions = 10
+    q_questions = len(questionSet)
 
 
     bs = [(n if n is not None else -1) for n in [b1, b2, b3, b4]]
